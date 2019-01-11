@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "humanize-duration": "^3.17.0",
     "moment": "^2.23.0",
     "numeral": "^2.0.6"
   }

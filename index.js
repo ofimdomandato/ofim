@@ -1,23 +1,19 @@
 const moment = require('moment')
-moment.locale('pt')
-
+const humanizeDuration = require('humanize-duration')
 const numeral = require('numeral')
 
 const ocomeco = moment('2019-01-01')
 const ofim = moment('2023-01-01')
 const totalDaysInOffice = ofim.diff(ocomeco, 'days')
 
-const daysLeft = () => {
-  return ofim.diff(moment(),'days')
+const left = (units) => {
+  const diff = ofim.diff(moment(),'milliseconds')
+  return humanizeDuration(diff, { language: 'pt', units, round: true })
 }
 
-const hoursLeft = () => {
-  return ofim.diff(moment(),'hours')
-}
-
-const minutesLeft = () => {
-  return ofim.diff(moment(),'minutes')
-}
+const daysLeft = () => left(['d'])
+const hoursLeft = () => left(['h'])
+const minutesLeft = () => left(['m'])
 
 const progress = () => {
   const daysInOffice = moment().diff(ocomeco, 'days')
