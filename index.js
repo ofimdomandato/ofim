@@ -20,7 +20,7 @@ const progress = (format) => {
   const daysInOffice = moment().diff(ocomeco, 'days')
   const p = daysInOffice / totalDaysInOffice
   if (!format) return p
-  return numeral(p).format('0.000')
+  return `${numeral(p).format('0.000')}%`
 }
 
 module.exports = {
@@ -29,5 +29,3 @@ module.exports = {
   minutesLeft,
   progress
 }
-
-console.log(progress(false)/10)
